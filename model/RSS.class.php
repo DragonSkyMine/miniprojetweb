@@ -44,6 +44,7 @@ class RSS {
     // Met à jour la date
     $this->date = date('Y-m-d H:i:s');
 
+    $nomLocalImage=1;
     // Recupère tous les items du flux RSS
     foreach ($doc->getElementsByTagName('item') as $node) {
 
