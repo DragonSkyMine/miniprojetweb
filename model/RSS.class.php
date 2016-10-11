@@ -51,6 +51,7 @@ class RSS {
 
       // Met à jour la nouvelle avec l'information téléchargée
       $nouvelle->update($node);
+      $nouvelle->downloadImage($node,$nomLocalImage);
       $this->nouvelles[] = $nouvelle;
     }
   }
