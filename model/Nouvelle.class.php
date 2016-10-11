@@ -40,16 +40,18 @@ class Nouvelle {
 
     $nodeList = $item->getElementsByTagName('link');
     $this->url = $nodeList->item(0)->textContent;
+
+    $nodeList = $item->getElementsByTagName('enclosure');
+    $node = $nodeList->item(0)->attributes->getNamedItem('url');
+    if ($node != NULL) {
+      //on récupère ça valeur, c'est l'url de l'image
+      $this->urlImage = $node->nodeValue;
+    }
   }
 
   function downloadImage(DOMElement $item, $imageId) {
-    $nodeList = $item->getElementsByTagName('enclosure');
-    $node = $nodeList->attributes->getNamedItem('url');
-    if ($node != NULL) {
-      // L'attribut url a été trouvé : on récupère sa valeur, c'est l'URL de l'image
-      $url = $node->nodeValue;
       // On construit un nom local pour cette image : on suppose que $nomLocalImage contient un identifiant unique
-      $this->image = 'images/'.$nomLocalImage.'.jpg';
+      $this->image = '../view/images/'.$imageId.'.jpg';
       // On télécharge l'image à l'aide de son URL, et on la copie localement.
       file_put_contents($this->image, file_get_contents($url));
     }
