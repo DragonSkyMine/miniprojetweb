@@ -10,7 +10,7 @@ $rss = new RSS('http://www.lemonde.fr/m-actu/rss_full.xml');
 $rss->update();
 
 // Affiche le titre
-echo $rss->getTitre()."<br>";
+echo $rss->getTitre()."<br>"."<br>";
 
 // Affiche le titre et la description de toutes les nouvelles
 foreach($rss->getNouvelles() as $nouvelle) {
