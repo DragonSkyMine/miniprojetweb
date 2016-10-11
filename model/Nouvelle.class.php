@@ -7,30 +7,30 @@ class Nouvelle {
   private $urlImage;    // URL vers l'image
 
   // Fonctions getter
-  function titre() {
+  function getTitre() {
     return $this->titre;
   }
 
-  function date() {
+  function getDate() {
     return $this->date;
   }
 
-  function description() {
+  function getDescription() {
     return $this->description;
   }
 
-  function url() {
+  function getUrl() {
     return $this->url;
   }
 
-  function urlImage() {
+  function getUrlImage() {
     return $this->urlImage;
   }
 
   // Charge les attributs de la nouvelle avec les informations du noeud XML
   function update(DOMElement $item) {
     $nodeList = $item->getElementsByTagName('title');
-    $this->titre    = $nodeList->item(0)->textContent;
+    $this->titre = $nodeList->item(0)->textContent;
 
     $nodeList = $item->getElementsByTagName('pubDate');
     $this->date = $nodeList->item(0)->textContent;
