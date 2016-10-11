@@ -43,7 +43,8 @@ class Nouvelle {
   }
 
   function downloadImage(DOMElement $item, $imageId) {
-    $node = $node->attributes->getNamedItem('url');
+    $nodeList = $item->getElementsByTagName('enclosure');
+    $node = $nodeList->attributes->getNamedItem('url');
     if ($node != NULL) {
       // L'attribut url a été trouvé : on récupère sa valeur, c'est l'URL de l'image
       $url = $node->nodeValue;
