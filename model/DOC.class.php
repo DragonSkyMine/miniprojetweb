@@ -1,5 +1,4 @@
 <?php
-
 // Definition de l'unique objet de DAO
 $doc = new DOC();
 
@@ -10,5 +9,4 @@ private $doc
     $doc->load('http://www.lemonde.fr/m-actu/rss_full.xml');
   }
 }
-
 ?>
