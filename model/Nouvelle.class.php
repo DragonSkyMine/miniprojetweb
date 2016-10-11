@@ -33,8 +33,13 @@ class Nouvelle {
     $this->titre    = $nodeList->item(0)->textContent;
 
     $nodeList = $item->getElementsByTagName('pubDate');
-    $this->date  = $nodeList->item(0)->textContent;
-    ...
+    $this->date = $nodeList->item(0)->textContent;
+
+    $nodeList = $item->getElementsByTagName('description');
+    $this->description = $nodeList->item(0)->textContent;
+
+    $nodeList = $item->getElementsByTagName('link');
+    $this->url = $nodeList->item(0)->textContent;
   }
 }
 ?>
