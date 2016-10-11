@@ -44,8 +44,14 @@ class RSS {
     // Met à jour la date
     $this->date = date('Y-m-d H:i:s');
 
-    // Remplit le tableau des nouvelles.
-    //$this->$nouvelles[] = ...
+    // Recupère tous les items du flux RSS
+    foreach ($doc->getElementsByTagName('item') as $node) {
+
+      $nouvelle = new Nouvelle();
+
+      // Met à jour la nouvelle avec l'information téléchargée
+      $nouvelle->update($node);
+    }
   }
 }
 ?>
