@@ -9,5 +9,5 @@ $rss = new RSS('http://www.lemonde.fr/m-actu/rss_full.xml');
 $rss->update();
 
 // Affiche le titre
-echo $rss->titre()."\n";
+echo $rss->getTitre()."\n";
 ?>

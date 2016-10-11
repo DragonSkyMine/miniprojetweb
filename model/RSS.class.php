@@ -11,19 +11,19 @@ class RSS {
   }
 
   // Fonctions getter
-  function titre() {
+  function getTitre() {
     return $this->titre;
   }
 
-  function url() {
+  function getUrl() {
     return $this->url;
   }
 
-  function date() {
+  function getDate() {
     return $this->date;
   }
 
-  function nouvelles() {
+  function getNouvelles() {
     return $this->nouvelles;
   }
 
@@ -42,7 +42,7 @@ class RSS {
     $this->titre = $nodeList->item(0)->textContent;
 
     // Met à jour la date
-    $this->$date = date();
+    $this->date = date('Y-m-d H:i:s');
 
     // Remplit le tableau des nouvelles.
     //$this->$nouvelles[] = ...
