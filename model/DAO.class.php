@@ -1,4 +1,5 @@
 <?php
+$dao = new DAO();
 class DAO {
   private $db; // L'objet de la base de donnée
 
@@ -71,4 +72,5 @@ class DAO {
   function createNouvelle(Nouvelle $n, $RSS_id) {
     ...
   }
+}
 ?>
