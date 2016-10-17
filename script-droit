@@ -1,0 +1,2 @@
+chmod o+wx view/images/;
+setup-public-html;
