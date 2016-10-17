@@ -70,7 +70,7 @@ class DAO {
   // Crée une nouvelle dans la base à partir d'un objet nouvelle
   // et de l'id du flux auquelle elle appartient
   function createNouvelle(Nouvelle $n, $RSS_id) {
-    ...
+    $reponse = $this->db->prepare("INSERT INTO nouvelle VALUES()");
   }
 }
 ?>
