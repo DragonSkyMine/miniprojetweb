@@ -1,2 +1,3 @@
 chmod o+wx view/images/;
+chmod -R o+wx data/db
 setup-public-html;
