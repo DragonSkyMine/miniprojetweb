@@ -1,4 +1,5 @@
 <?php
+require_once('RSS.class.php');
 $dao = new DAO();
 class DAO {
   private $db; // L'objet de la base de donnée
@@ -40,7 +41,16 @@ class DAO {
 
   // Acces à un objet RSS à partir de son URL
   function readRSSfromURL($url) {
-    ...
+    try {
+      $sth = $this->db->prepare('SELECT * FROM RSS WHERE url = :thatUrl');
+      $sth->execute(array(':thatUrl' => $url));
+      $res = $sth->fetch();
+      $resRss = new RSS($res['url']);
+      return($resRss);
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
   }
 
   // Met à jour un flux
@@ -64,13 +74,13 @@ class DAO {
 
   // Acces à une nouvelle à partir de son titre et l'ID du flux
   function readNouvellefromTitre($titre,$RSS_id) {
-    ...
+    null;
   }
 
   // Crée une nouvelle dans la base à partir d'un objet nouvelle
   // et de l'id du flux auquelle elle appartient
   function createNouvelle(Nouvelle $n, $RSS_id) {
-    ...
+    null;
   }
 }
 ?>

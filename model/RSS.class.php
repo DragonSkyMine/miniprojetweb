@@ -1,4 +1,5 @@
 <?php
+require_once('Nouvelle.class.php');
 class RSS {
   private $titre; // Titre du flux
   private $url;   // Chemin URL pour télécharger un nouvel état du flux
