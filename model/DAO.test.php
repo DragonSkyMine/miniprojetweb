@@ -12,16 +12,16 @@ if ($rss == NULL) {
   $rss = $dao->createRSS($url);
 }
 
+// Mise à jour du flux
+$rss->update();
+
 $titre = 'Le studio Ghibli toujours en mode pause';
 $RSS_id = 4;
 $new = $dao->readNouvellefromTitre($titre,$RSS_id);
 if ($new == NULL) {
   echo $titre . " avec rssId = " . $RSS_id . " n'est pas connu\n";
   echo "On l'ajoute ... \n";
-  $toAdd = $rss->getNouvelles()['$titre'];
-  $new = $dao->createNouvelle($toAdd, $RSS_id)
+  $toAdd = $rss->getNouvelles()[$titre];
+  $dao->createNouvelle($toAdd, $RSS_id);
 }
-
-// Mise à jour du flux
-$rss->update();
 ?>

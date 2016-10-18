@@ -78,20 +78,36 @@ class DAO {
   // Acces à une nouvelle à partir de son titre et l'ID du flux
   function readNouvellefromTitre($titre,$RSS_id) {
     try {
-      $sth = $this->db->prepare('SELECT * FROM nouvelle WHERE id = :id and titre = :titre');
-      $sth->execute(array(':id' => $RSS_id, ':titre' => $titre));
+      $sth = $this->db->prepare('SELECT * FROM nouvelle WHERE RSS_id = :RSS_id and titre = :titre');
+      $sth->execute(array(':RSS_id' => $RSS_id, ':titre' => $titre));
       $res = $sth->fetchAll(PDO::FETCH_CLASS, "Nouvelle");
       return($res);
     }
     catch (Exception $e) {
       die("Error in the query!");
-    }  }
-
-    // Crée une nouvelle dans la base à partir d'un objet nouvelle
-    // et de l'id du flux auquelle elle appartient
-    function createNouvelle(Nouvelle $n, $RSS_id) {
-      $req = "INSERT INTO nouvelle VALUES ('NULL', '" . $n->date ."', '" . $n->titre . "', '" . $n->description . "', '" . $n->url . "', '" . $n->urlImage . "', '" . $RSS_id . "')";
-      $reponse = $this->db->exec($req);
     }
   }
-  ?>
+
+  // Crée une nouvelle dans la base à partir d'un objet nouvelle
+  // et de l'id du flux auquelle elle appartient
+  function createNouvelle(Nouvelle $n, $RSS_id) {
+    try {
+      $sth = $this->db->prepare('INSERT INTO nouvelle VALUES (:id, :date1, :titre, :descr, :url, :urlImg, :rssId)');
+      $sth->execute(array(
+        ':id' => (NULL),
+        ':date1' => ($n->getDate()),
+        ':titre' => ($n->getTitre()),
+        ':descr' => ($n->getDescription()),
+        ':url' => ($n->getUrl()),
+        ':urlImg' => ($n->getUrlImage()),
+        ':rssId' => ($RSS_id)
+      ));
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+    /*$req = "INSERT INTO nouvelle VALUES ('NULL', '" . $n->getDate() ."', '" . $n->getTitre() . "', '" . $n->getDescription() . "', '" . $n->getUrl() . "', '" . $n->getUrlImage() . "', '" . $RSS_id . "')";
+    $this->db->exec($req);*/
+  }
+}
+?>
