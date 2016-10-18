@@ -9,6 +9,7 @@ class DAO {
     $dsn = 'sqlite:../data/db/rss.db'; // Data source name
     try {
       $this->db = new PDO($dsn);
+      $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
       exit("Erreur ouverture BD : ".$e->getMessage());
     }
