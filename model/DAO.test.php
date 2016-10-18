@@ -10,7 +10,6 @@ if ($rss == NULL) {
   echo $url." n'est pas connu\n";
   echo "On l'ajoute ... \n";
   $rss = $dao->createRSS($url);
-
 }
 
 // Mise à jour du flux

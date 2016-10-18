@@ -45,8 +45,11 @@ class DAO {
       $sth = $this->db->prepare('SELECT * FROM RSS WHERE url = :thatUrl');
       $sth->execute(array(':thatUrl' => $url));
       $res = $sth->fetch();
-      $resRss = new RSS($res['url']);
-      return($resRss);
+      if ($res != NULL) {
+        $resRss = new RSS($res['url']);
+        return($resRss);
+      }
+      return NULL;
     }
     catch (Exception $e) {
       die("Error in the query!");
