@@ -77,8 +77,15 @@ class DAO {
 
   // Acces à une nouvelle à partir de son titre et l'ID du flux
   function readNouvellefromTitre($titre,$RSS_id) {
-    null;
-  }
+    try {
+      $sth = $this->db->prepare('SELECT * FROM nouvelle WHERE id = :id and titre = :titre');
+      $sth->execute(array(':id' => $RSS_id, ':titre' => $titre));
+      $res = $sth->fetchAll(PDO::FETCH_CLASS, "Nouvelle");
+      return($res);
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }  }
 
   // Crée une nouvelle dans la base à partir d'un objet nouvelle
   // et de l'id du flux auquelle elle appartient
