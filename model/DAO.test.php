@@ -16,7 +16,8 @@ if ($rss == NULL) {
 $rss->update();
 
 $titre = 'Le studio Ghibli toujours en mode pause';
-$RSS_id = 4;
+
+$RSS_id = $dao->getRssId($rss->getUrl());
 $new = $dao->readNouvellefromTitre($titre,$RSS_id);
 if ($new == NULL) {
   echo $titre . " avec rssId = " . $RSS_id . " n'est pas connu\n";

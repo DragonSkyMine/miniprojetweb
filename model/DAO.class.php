@@ -109,5 +109,18 @@ class DAO {
     /*$req = "INSERT INTO nouvelle VALUES ('NULL', '" . $n->getDate() ."', '" . $n->getTitre() . "', '" . $n->getDescription() . "', '" . $n->getUrl() . "', '" . $n->getUrlImage() . "', '" . $RSS_id . "')";
     $this->db->exec($req);*/
   }
+
+
+  function getRssId($url) {
+    try {
+      $sth = $this->db->prepare('SELECT id FROM RSS WHERE url = :url');
+      $sth->execute(array(':url' => $url));
+      $res = $sth->fetch();
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+    return $res['id'];
+  }
 }
 ?>
