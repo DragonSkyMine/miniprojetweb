@@ -87,10 +87,11 @@ class DAO {
       die("Error in the query!");
     }  }
 
-  // Crée une nouvelle dans la base à partir d'un objet nouvelle
-  // et de l'id du flux auquelle elle appartient
-  function createNouvelle(Nouvelle $n, $RSS_id) {
-    $reponse = $this->db->prepare("INSERT INTO nouvelle VALUES()");
+    // Crée une nouvelle dans la base à partir d'un objet nouvelle
+    // et de l'id du flux auquelle elle appartient
+    function createNouvelle(Nouvelle $n, $RSS_id) {
+      $req = "INSERT INTO nouvelle VALUES ('NULL', '" . $n->date ."', '" . $n->titre . "', '" . $n->description . "', '" . $n->url . "', '" . $n->urlImage . "', '" . $RSS_id . "')";
+      $reponse = $this->db->exec($req);
+    }
   }
-}
-?>
+  ?>
