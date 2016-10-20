@@ -123,5 +123,38 @@ class DAO {
     }
     return $res['id'];
   }
+
+  function getFlux() {
+    $sth = $this->db->prepare('SELECT url FROM RSS');
+    $sth->execute();
+    while ($res = $sth->fetch()) {
+      $data[] = $res;
+    }
+    return($data);
+  }
+
+  function readNouvellefromRssId($RSS_id) {
+    try {
+      $sth = $this->db->prepare('SELECT * FROM nouvelle WHERE RSS_id = :RSS_id ');
+      $sth->execute(array(':RSS_id' => $RSS_id));
+      $res = $sth->fetchAll(PDO::FETCH_CLASS, "Nouvelle");
+      return($res);
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+  }
+
+  function readNouvellefromId($id) {
+    try {
+      $sth = $this->db->prepare('SELECT * FROM nouvelle WHERE id = :id ');
+      $sth->execute(array(':id' => $id));
+      $res = $sth->fetchAll(PDO::FETCH_CLASS, "Nouvelle");
+      return($res);
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+  }
 }
 ?>
