@@ -6,6 +6,6 @@
 <body>
   <h1>Les différents flux</h1>
   <?php foreach ($data as $key => $value) {
-    echo '<p>' . $value . '</p>';
+    echo '<p>' . $value['url'] . '</p>';
   } ?>
 </body>
