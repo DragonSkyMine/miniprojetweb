@@ -50,5 +50,6 @@ img {
 }
 
 a.para {
+  text-align: right;
   float: right;
 }
