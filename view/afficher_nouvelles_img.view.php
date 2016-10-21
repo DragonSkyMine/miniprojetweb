@@ -4,9 +4,12 @@
   <meta charset="utf-8">
 </head>
 <body>
+  <a href="../controler/afficher_flux.ctrl.php">
+  <img style="  width: 20px;height: 20px;" src="../view/back.png"></a>
+
 <?php
-  // Charge le flux depuis le réseau
-  $rss->update();
+// Charge le flux depuis le réseau
+$rss->update();
 
   // Affiche le titre
   echo "<br>".$rss->getTitre()."<br>"."<br>";
@@ -15,7 +18,7 @@
   foreach($rss->getNouvelles() as $nouvelle) {
 ?>
     <div style="display: inline-block;border: 1px solid black;margin: 5px">
-    <a href="'.$nouvelle->getUrl().'">
+    <a href="<?= $nouvelle->getUrl() ?>">
     <img style="  width: auto;max-width:300px;height: auto;max-height:300px;" src=" <?= $nouvelle->getUrlImage() ?>"><br></a>
     </div>
 <?php
