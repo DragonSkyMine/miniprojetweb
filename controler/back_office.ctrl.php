@@ -14,8 +14,10 @@
         $dao->updateRSS($dao->readRSSfromURL($_GET['url']));
       }
       break;
-    case 2: // page d'ajout de flux dans la base
-
+    case 2: // suppression d'un flux
+      if(isset($_GET['url'])) {
+        $dao->updateRSS($dao->readRSSfromURL($_GET['url']));
+      }
       break;
     case 3: // page de mise à jour de flux
 

@@ -156,5 +156,15 @@ class DAO {
       die("Error in the query!");
     }
   }
+
+  function deleteRSS($url) {
+    try {
+      $sth = $this->db->prepare('DELETE * FROM RSS WHERE url = :url ');
+      $sth->execute(array(':url' => $url));
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+  }
 }
 ?>

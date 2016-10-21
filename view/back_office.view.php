@@ -7,7 +7,7 @@
   <ul>
     <?php
     foreach ($flux as $key => $value) {
-      echo '<li><p>' . $value['url'] . '<a href="../controler/back_office.ctrl.php?cat=1&url=' . $value['url'] . '"><img class="refresh" src="../view/refresh.png"></a></li></p>';
+      echo '<li><a href="../controler/back_office.ctrl.php?cat=2&url=' . $value['url'] . '"><img class="delete" src="../view/error.png"></a><p>' . $value['url'] . '<a href="../controler/back_office.ctrl.php?cat=1&url=' . $value['url'] . '"><img class="refresh" src="../view/refresh.png"></a><p></li>';
     }
     ?>
   </ul>
