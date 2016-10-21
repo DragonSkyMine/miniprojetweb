@@ -16,7 +16,7 @@
       break;
     case 2: // suppression d'un flux
       if(isset($_GET['url'])) {
-        $dao->updateRSS($dao->readRSSfromURL($_GET['url']));
+        $dao->deleteRSS($_GET['url']);
       }
       break;
     case 3: // page de mise à jour de flux
