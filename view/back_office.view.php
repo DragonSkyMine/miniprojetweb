@@ -4,6 +4,13 @@
   <meta charset="utf-8">
 </head>
 <body>
+  <form method="get" action="back_office.ctrl.php">
+  <p>
+    <input type="text" name="url"/>
+    <input type="hidden" name="cat" value="3" />
+    <input type="submit" value="Ajouter"/>
+  </p>
+  </form>
   <ul>
     <?php
     foreach ($flux as $key => $value) {
