@@ -61,7 +61,7 @@ class DAO {
   function updateRSS(RSS $rss) {
     // Met à jour uniquement le titre et la date
     $titre = $this->db->quote($rss->getTitre());
-    $q = "UPDATE RSS SET titre=$titre, date='".$rss->getDate()."' WHERE url='".$rss->getUurl()."'";
+    $q = "UPDATE RSS SET titre=$titre, date='".$rss->getDate()."' WHERE url='".$rss->getUrl()."'";
     try {
       $r = $this->db->exec($q);
       if ($r == 0) {
