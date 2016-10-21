@@ -9,8 +9,10 @@
   }
 
   switch ($cat) {
-    case 1: // page d'affichage des flux avec date de dernière mise à jour
-
+    case 1: // page de mise à jour du flux en paramètre
+      if(isset($_GET['url'])) {
+        $dao->updateRSS($dao->readRSSfromURL($_GET['url']));
+      }
       break;
     case 2: // page d'ajout de flux dans la base
 
