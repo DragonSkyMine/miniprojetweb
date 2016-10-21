@@ -8,7 +8,7 @@
   <header>
   <h1>Les différents flux</h1>
 
-  <a class="para" href="../controler/back_office.ctrl.php">
+  <a href="../controler/back_office.ctrl.php">
   <img style="  width: 20px;height: 20px;" src="../view/settings.png"></a></p>
 
   </header>
