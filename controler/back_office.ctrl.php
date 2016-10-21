@@ -19,8 +19,10 @@
         $dao->deleteRSS($_GET['url']);
       }
       break;
-    case 3: // page de mise à jour de flux
-
+    case 3: // ajouter un flux
+      if(isset($_GET['url'])) {
+        $dao->createRSS($_GET['url']);
+      }
       break;
     case 4: // page de vidage des flux
 
