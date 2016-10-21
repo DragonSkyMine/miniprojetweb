@@ -5,10 +5,6 @@
 </head>
 <body>
 <?php
-foreach ($flux as $key => $value) {
-  // Une instance de RSS
-  $rss = new RSS($value['url']);
-
   // Charge le flux depuis le réseau
   $rss->update();
 
@@ -24,7 +20,6 @@ foreach ($flux as $key => $value) {
     </div>
 <?php
   }
-}
 ?>
 </body>
 </html>
