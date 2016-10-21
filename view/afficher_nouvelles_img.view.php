@@ -13,17 +13,11 @@
 $rss->update();
 
   // Affiche le titre
-  echo "<br><h1>".$rss->getTitre()."</h1><br>"."</header>";
+  echo "<br><h1>".$rss->getTitre()."</h1>"."\n"."</header>"."\n";
 
   // Affiche le titre et la description de toutes les nouvelles
   foreach($rss->getNouvelles() as $nouvelle) {
-?>
-    <div>
-      <a href="<?= $nouvelle->getUrl() ?>">
-        <img src=" <?= $nouvelle->getUrlImage() ?>"><br>
-      </a>
-    </div>
-<?php
+    echo '<div><a href="'.$nouvelle->getUrl().'"><img src="'.$nouvelle->getUrlImage().'"></a></div>';
   }
 ?>
 </body>
