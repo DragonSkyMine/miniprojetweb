@@ -1,3 +1,3 @@
 <?php
-  header('location:');
+  header('location:controler/afficher_flux.ctrl.php');
  ?>
