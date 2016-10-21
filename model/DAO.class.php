@@ -60,8 +60,8 @@ class DAO {
   // Met à jour un flux
   function updateRSS(RSS $rss) {
     // Met à jour uniquement le titre et la date
-    $titre = $this->db->quote($rss->titre());
-    $q = "UPDATE RSS SET titre=$titre, date='".$rss->date()."' WHERE url='".$rss->url()."'";
+    $titre = $this->db->quote($rss->getTitre());
+    $q = "UPDATE RSS SET titre=$titre, date='".$rss->getDate()."' WHERE url='".$rss->getUrl()."'";
     try {
       $r = $this->db->exec($q);
       if ($r == 0) {
@@ -151,6 +151,16 @@ class DAO {
       $sth->execute(array(':id' => $id));
       $res = $sth->fetchAll(PDO::FETCH_CLASS, "Nouvelle");
       return($res);
+    }
+    catch (Exception $e) {
+      die("Error in the query!");
+    }
+  }
+
+  function deleteRSS($url) {
+    try {
+      $sth = $this->db->prepare('DELETE FROM RSS WHERE url = :url ');
+      $sth->execute(array(':url' => $url));
     }
     catch (Exception $e) {
       die("Error in the query!");
