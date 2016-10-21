@@ -60,7 +60,7 @@ class DAO {
   // Met à jour un flux
   function updateRSS(RSS $rss) {
     // Met à jour uniquement le titre et la date
-    $titre = $this->db->quote($rss->titre());
+    $titre = $this->db->quote($rss->getTitre());
     $q = "UPDATE RSS SET titre=$titre, date='".$rss->date()."' WHERE url='".$rss->url()."'";
     try {
       $r = $this->db->exec($q);
