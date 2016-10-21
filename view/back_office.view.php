@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="../view/back_office.view.css" charset="utf-8">
   <meta charset="utf-8">
 </head>
 <body>
+  <header>
+    <a href="../controler/afficher_flux.ctrl.php">
+    <img class="back" src="../view/back.png"></a>
+    <h1>Gestion des flux</h1>
+  </header>
   <form method="get" action="back_office.ctrl.php">
   <p>
-    <input type="text" name="url"/>
-    <input type="hidden" name="cat" value="3" />
-    <input type="submit" value="Ajouter"/>
+    <input type="text" name="url"/><input type="hidden" name="cat" value="3" /><input type="submit" value="Ajouter"/>
   </p>
   </form>
   <ul>
