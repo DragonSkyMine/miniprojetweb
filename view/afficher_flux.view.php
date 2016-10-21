@@ -8,9 +8,9 @@
   <header>
   <h1>Les différents flux</h1>
 
-  <a href="../controler/back_office.ctrl.php">
+  <a class="para" href="../controler/back_office.ctrl.php">
   <img style="  width: 20px;height: 20px;" src="../view/settings.png"></a></p>
-  
+
   </header>
   <?php foreach ($data as $key => $value) {
     echo '<p>' . $value['url'];
