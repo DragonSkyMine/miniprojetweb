@@ -159,7 +159,7 @@ class DAO {
 
   function deleteRSS($url) {
     try {
-      $sth = $this->db->prepare('DELETE * FROM RSS WHERE url = :url ');
+      $sth = $this->db->prepare('DELETE FROM RSS WHERE url = :url ');
       $sth->execute(array(':url' => $url));
     }
     catch (Exception $e) {
