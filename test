@@ -1,0 +1,57 @@
+# Convention : Les fichiers de suffixe .c
+#              - ne contiennent pas pas de main() sauf mini_shell.c
+#
+# Exemples de compilation :
+# make
+# make OPT=n
+# make ETU=y
+#
+# Exemples d'exécution :
+# bin-gcc/mon_executable
+# bin-clang/mon_executable
+
+ifeq ($(OPT),n)
+OPTFLAGS=-O0
+else
+OPTFLAGS=-Os
+endif
+
+DEFINES = -D_GNU_SOURCE # for get_current_dir_name()
+
+ifeq ($(ETU),y)
+DEFINES += -DETUDIANTS
+endif
+
+compilo-gcc = gcc $(OPTFLAGS) -g -std=gnu11 -Wall -W -Werror
+compilo-clang = clang-3.9 $(OPTFLAGS) -g -std=gnu11 -Weverything -Werror -Wno-missing-noreturn -Wno-padded -Wno-disabled-macro-expansion -fcaret-diagnostics
+
+executables = mini_shell
+
+executables-gcc = $(foreach exe,$(executables),bin-gcc/$(exe))
+executables-clang = $(foreach exe,$(executables),bin-clang/$(exe))
+
+headers = $(wildcard *.hpp)
+objets = $(patsubst %.c,%.o, $(wildcard *.c))
+objets-gcc = $(foreach obj,$(objets),bin-gcc/$(obj))
+objets-clang = $(foreach obj,$(objets),bin-clang/$(obj))
+
+default: $(executables-gcc)
+
+$(executables-gcc): %: %.o $(objets-gcc)
+	@make --no-print-directory $(subst bin-gcc,bin-clang,$@)
+	$(compilo-gcc) $^ -o $@
+
+$(executables-clang): %: %.o $(objets-clang)
+	$(compilo-clang) $^ -o $@
+
+bin-gcc/%.o: %.c $(headers)
+	@mkdir -p bin-gcc
+	@make --no-print-directory $(subst bin-gcc,bin-clang,$@)
+	$(compilo-gcc) $(DEFINES) -c $< -o $@
+
+bin-clang/%.o: %.c $(headers)
+	@mkdir -p bin-clang
+	$(compilo-clang) $(DEFINES) -c $< -o $@
+
+menage:
+	rm -rf *~ bin* a.out core
